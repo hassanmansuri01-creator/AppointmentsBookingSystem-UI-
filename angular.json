@@ -49,20 +49,20 @@
           },
           "defaultConfiguration": "production"
         },
-        "test": {
-          "builder": "@angular/build:karma",
+        "serve": {
+          "builder": "@angular/build:dev-server",
           "options": {
-            "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.css"
-            ]
-          }
+            "buildTarget": "appointment-management-angular:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "appointment-management-angular:build:production"
+            },
+            "development": {
+              "buildTarget": "appointment-management-angular:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
         }
       }
     }
