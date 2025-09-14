@@ -1,0 +1,26 @@
+form {
+  max-width: 400px;
+  margin: 2em auto;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+div {
+  margin-bottom: 1em;
+}
+label {
+  display: block;
+  margin-bottom: 0.3em;
+}
+input {
+  width: 100%;
+  padding: 0.4em;
+  box-sizing: border-box;
+}
+button {
+  margin-right: 0.5em;
+}
+.error {
+  color: red;
+  margin-bottom: 1em;
+}

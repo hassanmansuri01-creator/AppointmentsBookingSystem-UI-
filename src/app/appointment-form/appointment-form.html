@@ -1,0 +1,23 @@
+<h2>{{ isEditMode ? 'Edit' : 'Add' }} Appointment</h2>
+
+<form (ngSubmit)="onSubmit()" #apptForm="ngForm">
+    <div *ngIf="error" class="error" style="color:red;">{{ error }}</div>
+  <div>
+    <label>Patient Name:</label>
+    <input type="text" name="patientName" [(ngModel)]="appointment.PatientName" required />
+  </div>
+  <div>
+    <label>Doctor Name:</label>
+    <input type="text" name="doctorName" [(ngModel)]="appointment.DoctorName" required />
+  </div>
+  <div>
+    <label>Start Time:</label>
+    <input type="datetime-local" name="startTime" [(ngModel)]="appointment.StartTime" required />
+  </div>
+  <div>
+    <label>End Time:</label>
+    <input type="datetime-local" name="endTime" [(ngModel)]="appointment.EndTime" required />
+  </div>
+  <button type="submit" [disabled]="apptForm.invalid">{{ isEditMode ? 'Update' : 'Add' }}</button>
+  <button type="button" routerLink="/">Cancel</button>
+</form>

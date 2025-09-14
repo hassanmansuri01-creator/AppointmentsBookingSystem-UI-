@@ -1,0 +1,35 @@
+<button routerLink="/add">Add Appointment</button>
+
+<div *ngIf="loading">Loading appointments</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<table *ngIf="appointments.length > 0">
+<thead>
+    <tr>
+        <th>Patient Name</th>
+        <th>Doctor Name</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Actions</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let appt of appointments">
+        <td>{{ appt.PatientName }}</td>
+        <td>{{ appt.DoctorName }}</td>
+        <td>{{ appt.StartTime | date:'short' }}</td>
+        <td>{{ appt.EndTime | date:'short' }}</td>
+        <td>
+          <a [routerLink]="['/edit', appt.Id]">
+            <button type="button">Edit</button>
+          </a>
+            <!-- <button (click)="editAppointment(appt.id)">Edit</button> -->
+            <button (click)="deleteAppointment(appt.Id)">Delete</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div *ngIf="appointments.length === 0 && !loading && !error">
+    No appointments found.
+</div>
