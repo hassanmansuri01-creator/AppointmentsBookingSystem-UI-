@@ -47,21 +47,24 @@ export class AppointmentForm implements OnInit {
       });
     }
   }
-
+  onCancel() {
+    // Redirect back to list
+    this.router.navigate(['/']);
+  }
   onSubmit() {
     if (this.isEditMode && this.id) {
       this.appointmentService.updateAppointment(this.id, this.appointment as Appointment).subscribe({
         next: () => this.router.navigate(['/']),
-        error: () => {
-          this.error = 'Failed to update appointment';
+        error: (err) => {
+          this.error = err.error;//'Sorry! For This Time Slot Doctor Is Already Booked So Please Book Another Time Slot';
           this.cdr.detectChanges();
         }
       });
     } else {
       this.appointmentService.addAppointment(this.appointment as Omit<Appointment, 'id'>).subscribe({
         next: () => this.router.navigate(['/']),
-        error: () => {
-          this.error = 'Failed to add appointment';
+        error: (err) => {
+          this.error = err.error//'Sorry! For This Time Slot Doctor Is Already Booked So Please Book Another Time Slot';
           this.cdr.detectChanges();
         }
       });

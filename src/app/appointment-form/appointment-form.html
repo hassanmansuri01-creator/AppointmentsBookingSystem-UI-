@@ -19,5 +19,5 @@
     <input type="datetime-local" name="endTime" [(ngModel)]="appointment.EndTime" required />
   </div>
   <button type="submit" [disabled]="apptForm.invalid">{{ isEditMode ? 'Update' : 'Add' }}</button>
-  <button type="button" routerLink="/">Cancel</button>
+  <button type="button" (click)="onCancel()">Cancel</button>
 </form>
